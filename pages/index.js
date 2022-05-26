@@ -1,8 +1,16 @@
+import React, {useState} from 'react';
+
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import classnames from 'classnames'
+import styles from '../styles/Home.module.scss'
 
 export default function Home() {
+const [titleAnimation, startTitleAnimation] = useState(false); 
+  setTimeout(() => {
+    startTitleAnimation(true)
+  }, 1000);
+  console.log(titleAnimation)
   return (
     <div className={styles.container}>
       <Head>
@@ -12,8 +20,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Bem vindes ao Blog Arco-Íris
+        <h1 className={classnames(styles.title, { [styles.animating]: titleAnimation })}>
+          Bem vindes ao Blog Arco-Íris 🌈
         </h1>
 
         <p className={styles.description}>
